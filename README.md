@@ -41,7 +41,7 @@ This is the scrapper for the project Handwritten Digital, for SWAT - Platzi Mast
 
 Signature  verification  and  forgery  detection  is  the  process  of  verifying  signatures  automatically  and  instantly  to determine  whether  the  signature  is  real  or  not.  There  are  two  main  kinds  of  signature  verification:  static  and dynamic.  Static,  or  off-line  verification  is  the  process  of  verifying  a  document  signature  after  it  has  been  made, while  dynamic  or  on-line  verificationtakes  place  as  a  person  creates  his/her  signature  on  a  digital  tablet  or  a similar  device.
 
-In this project, the process will be entirely off-line, therefore, the user will have to upload the photo of his/her signature in order to check how similar are the signatures in the dabase versus the photo recently uploaded. If the comparison is over 90% the signature is considered reliable and proceed to certified the document.
+In this project, the process will be entirely off-line, therefore, the user will have to upload the photo of his/her signature in order to check how similar are the signatures in the database versus the photo recently uploaded. If the comparison is over 90% the signature is considered reliable and proceed to certified the document.
 
 ### Creating the Convolutional Neural Network
 
@@ -104,6 +104,24 @@ Non-trainable params: 4
 ```
 
 ### Creating the Siamese Neural Network
+
+```py
+# creating the siamese network
+im_a = tf.keras.layers.Input(shape=(150,150,3))
+im_b = tf.keras.layers.Input(shape=(150,150,3))
+
+encoded_a = feature_vector(im_a)
+encoded_b = feature_vector(im_b)
+
+combined = tf.keras.layers.concatenate([encoded_a, encoded_b])
+combined = tf.keras.layers.BatchNormalization()(combined)
+combined = tf.keras.layers.Dense(8, activation = 'linear')(combined)
+combined = tf.keras.layers.BatchNormalization()(combined)
+combined = tf.keras.layers.Activation('relu')(combined)
+combined = tf.keras.layers.Dense(1, activation = 'sigmoid')(combined)
+
+sm = tf.keras.Model(inputs=[im_a, im_b], outputs=[combined])
+```
 
 The very first thing to do is set the shape of the inputs, here are considered as `im_a` (image a) and `im_b` (image b).
 
