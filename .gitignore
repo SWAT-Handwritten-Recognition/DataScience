@@ -1,1 +1,6 @@
 input/
+AWS/venv
+AWS/*.pem
+AWS/*.ppk
+*/__pycache__
+.vscode/

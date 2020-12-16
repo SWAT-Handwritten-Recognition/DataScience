@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+    
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Siamese Neural Network</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="database_image" id="database_image" placeholder="Database Image" required="required" />
+        <input type="text" name="frontend_image" id="frontend_image" placeholder="Frontend Image" required="required" />
+		
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
