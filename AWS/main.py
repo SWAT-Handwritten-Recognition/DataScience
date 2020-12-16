@@ -26,17 +26,13 @@ def predict():
 @app.route('/verify', methods=['POST'])
 def verify():
     """This function calculates the similarity between two signatures """
-    try:
-        status_code = Response(status=201).status_code
-        info = request.get_json()
-        database_image = info['database_image']
-        frontend_image = info['frontend_image']
-        result = compare_images(database_image, frontend_image)
-        return jsonify({'status':status_code,'result':result})
-    except TypeError:
-        status_code = Response(status=500).status_code
-        return jsonify({'Status':status_code,'result':'Please review info body'})
-
+    status_code = Response(status=201).status_code
+    info = request.get_json()
+    database_image = info['database_image']
+    frontend_image = info['frontend_image']
+    result = compare_images(database_image, frontend_image)
+    return jsonify({'status':status_code,'result':result})
+    
 if __name__ == "__main__":
     app.debug=True
     app.run(host='0.0.0.0', port=8080)
