@@ -30,8 +30,8 @@ def verify():
     info = request.get_json()
     database_image = info['database_image']
     frontend_image = info['frontend_image']
-    result = compare_images(database_image, frontend_image)
-    return jsonify({'status':status_code,'result':result})
+    result = compare_images(database_image, frontend_image)[0]
+    return jsonify({'status':status_code,'result':str(result[0])})
     
 if __name__ == "__main__":
     app.debug=True
