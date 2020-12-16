@@ -24,7 +24,7 @@ def predict():
     return render_template('index.html', prediction_text='{}'.format(result))
 
 @app.route('/verify', methods=['POST'])
-def up_score():
+def verify():
     """This function calculates the similarity between two signatures """
     try:
         status_code = Response(status=201).status_code
@@ -32,10 +32,10 @@ def up_score():
         database_image = info['database_image']
         frontend_image = info['frontend_image']
         result = compare_images(database_image, frontend_image)
-        return jsonify({'status':status_code, 'result':result, })
+        return jsonify({'status':status_code,'result':result})
     except TypeError:
-        print("[Error] ", TypeError.__str__())
-        return jsonify({'Status': 'Please review info body'})
+        status_code = Response(status=500).status_code
+        return jsonify({'Status':status_code,'result':'Please review info body'})
 
 if __name__ == "__main__":
     app.debug=True
