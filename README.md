@@ -25,7 +25,7 @@
 
 ## Summary
 
-This is the scrapper for the project Handwritten Digital, for SWAT - Platzi Master. Handwritten Digital was divided in three projects, these three projects were build by an amazing team, that is described next.
+This is the Model for the project Handwritten Digital, for SWAT - Platzi Master. Handwritten Digital was divided in three projects, these three projects were build by an amazing team, that is described next.
 1. [Frontend](https://github.com/SWAT-Handwritten-Recognition/Frontend)
     * [Bernardo Aguayo](https://github.com/BernardoAguayoOrtega)
 2. [Backend](https://github.com/SWAT-Handwritten-Recognition/Backend)
